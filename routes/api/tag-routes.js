@@ -31,7 +31,7 @@ router.get('/:id', (req, res) => {
       attributes: ['id', 'product_name', 'price', 'stock', 'category_id']
     }]
   }).then(dbPostData => {
-    if (!dbPostData) {
+    if (!dbPostData) { // checks if dbPostData is falsy (doesn't exist)
       res.status(404).json({ message: 'No tag found with this id' });
       return;
     }
@@ -59,7 +59,7 @@ router.put('/:id', (req, res) => {
   Tag.update(req.body, {
     where: { id: req.params.id }
   }).then(dbPostData => {
-    if (!dbPostData) {
+    if (!dbPostData) { // checks if dbPostData is falsy (doesn't exist)
       res.status(404).json({ message: 'No tag found with this id' });
       return;
     }
@@ -76,7 +76,7 @@ router.delete('/:id', (req, res) => {
   Tag.destroy({
     where: {id: req.params.id}
   }).then(dbPostData => {
-    if (!dbPostData) {
+    if (!dbPostData) { // checks if dbPostData is falsy (doesn't exist)
       res.status(404).json({ message: 'No tag found with this id' });
       return;
     }
